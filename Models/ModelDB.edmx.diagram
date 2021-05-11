@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6f4ba43c476c4a41a04b85253ecc31bf" Name="Diagram1">
+        <EntityTypeShape EntityType="SinavBasvuruModel.BASVURU" Width="1.5" PointX="5.25" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="SinavBasvuruModel.DERSLIK" Width="1.5" PointX="3" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SinavBasvuruModel.FAKULTE" Width="1.5" PointX="0.75" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SinavBasvuruModel.KULLANCIGIRIS" Width="1.5" PointX="5.25" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SinavBasvuruModel.OGRENCI" Width="1.5" PointX="3" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SinavBasvuruModel.OGRETIMELEMANI" Width="1.5" PointX="3" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="SinavBasvuruModel.OGRETIMELEMANIDERSLIK" Width="1.5" PointX="8.25" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SinavBasvuruModel.SINAV" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SinavBasvuruModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="3.25" IsExpanded="true" />
+        <AssociationConnector Association="SinavBasvuruModel.FK_BASVURU_To_DERSLIK" ManuallyRouted="false" />
+        <AssociationConnector Association="SinavBasvuruModel.FK_BASVURU_To_OGRENCI" ManuallyRouted="false" />
+        <AssociationConnector Association="SinavBasvuruModel.FK_BASVURU_To_SINAV" ManuallyRouted="false" />
+        <AssociationConnector Association="SinavBasvuruModel.FK_DERSLIK_FAKULTE" ManuallyRouted="false" />
+        <AssociationConnector Association="SinavBasvuruModel.FK_OGRETIMELEMANIDERSLIK_DERSLIK" ManuallyRouted="false" />
+        <AssociationConnector Association="SinavBasvuruModel.FK_OGRENCI_FAKULTE" ManuallyRouted="false" />
+        <AssociationConnector Association="SinavBasvuruModel.FK_OGRETIMELEMANI_FAKULTE" ManuallyRouted="false" />
+        <AssociationConnector Association="SinavBasvuruModel.FK_KULLANCIGIRIS_OGRETIMELEMANI" ManuallyRouted="false" />
+        <AssociationConnector Association="SinavBasvuruModel.FK_OGRETIMELEMANIDERSLIK_OGRETIMELEMANI" ManuallyRouted="false" />
+        <AssociationConnector Association="SinavBasvuruModel.FK_OGRETIMELEMANIDERSLIK_SINAV" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

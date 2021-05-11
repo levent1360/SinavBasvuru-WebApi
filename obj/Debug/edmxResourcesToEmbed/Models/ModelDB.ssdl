@@ -1,0 +1,281 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SinavBasvuruModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="BASVURU">
+    <Key>
+      <PropertyRef Name="BasvuruId" />
+    </Key>
+    <Property Name="BasvuruId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="BasvuruOgrenciId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="BasvuruTarihi" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="BasvuruDuzenlemeTarihi" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="BasvuruIptal" Type="int" Nullable="false" />
+    <Property Name="BasvuruIptalTarihi" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="BasvuruSinavId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="BasvuruDerslikId" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DERSLIK">
+    <Key>
+      <PropertyRef Name="DerslikId" />
+    </Key>
+    <Property Name="DerslikId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="DerslikAd" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="DerslikKat" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="DerslikFakulteId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="DerslikKapasite" Type="int" Nullable="false" />
+    <Property Name="DerslikAktif" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FAKULTE">
+    <Key>
+      <PropertyRef Name="FakulteId" />
+    </Key>
+    <Property Name="FakulteId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="FakulteAd" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="KULLANCIGIRIS">
+    <Key>
+      <PropertyRef Name="KullaniciId" />
+    </Key>
+    <Property Name="KullaniciId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="OEId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="OEDKullaniciAdi" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="OEDSifre" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Yetki" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OGRENCI">
+    <Key>
+      <PropertyRef Name="OgrenciId" />
+    </Key>
+    <Property Name="OgrenciId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="OgrenciNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="OgrenciTC" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="OgrenciAd" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="OgrenciSoyad" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="OgrenciMail" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="OgrenciTel" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="OgrenciFakulteId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="OgrenciBolum" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="OgrenciSinif" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="OgrenciKayitTuru" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="OgrenciDerece" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="OgrenciAktif" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OGRETIMELEMANI">
+    <Key>
+      <PropertyRef Name="OEId" />
+    </Key>
+    <Property Name="OEId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="OEAd" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="OESoyad" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="OEUnvan" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="OEFakulteId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="OETel" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="OEEposta" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="OEKimlikNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OGRETIMELEMANIDERSLIK">
+    <Key>
+      <PropertyRef Name="OEDId" />
+    </Key>
+    <Property Name="OEDId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="OEDerslikId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="OESinavId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="OEDOEId" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SINAV">
+    <Key>
+      <PropertyRef Name="SinavId" />
+    </Key>
+    <Property Name="SinavId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SinavAd" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SinavDonem" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SinavZamani" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SinavTuru" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SinavDili" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SinavTamam" Type="int" Nullable="false" />
+    <Property Name="SinavIptal" Type="int" Nullable="false" />
+    <Property Name="SinavAciklama" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="SinavBasvuruBaslama" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SinavBasvuruBitis" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK_BASVURU_To_DERSLIK">
+    <End Role="DERSLIK" Type="Self.DERSLIK" Multiplicity="1" />
+    <End Role="BASVURU" Type="Self.BASVURU" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DERSLIK">
+        <PropertyRef Name="DerslikId" />
+      </Principal>
+      <Dependent Role="BASVURU">
+        <PropertyRef Name="BasvuruDerslikId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BASVURU_To_OGRENCI">
+    <End Role="OGRENCI" Type="Self.OGRENCI" Multiplicity="1" />
+    <End Role="BASVURU" Type="Self.BASVURU" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OGRENCI">
+        <PropertyRef Name="OgrenciId" />
+      </Principal>
+      <Dependent Role="BASVURU">
+        <PropertyRef Name="BasvuruOgrenciId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BASVURU_To_SINAV">
+    <End Role="SINAV" Type="Self.SINAV" Multiplicity="1" />
+    <End Role="BASVURU" Type="Self.BASVURU" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SINAV">
+        <PropertyRef Name="SinavId" />
+      </Principal>
+      <Dependent Role="BASVURU">
+        <PropertyRef Name="BasvuruSinavId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DERSLIK_FAKULTE">
+    <End Role="FAKULTE" Type="Self.FAKULTE" Multiplicity="1" />
+    <End Role="DERSLIK" Type="Self.DERSLIK" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FAKULTE">
+        <PropertyRef Name="FakulteId" />
+      </Principal>
+      <Dependent Role="DERSLIK">
+        <PropertyRef Name="DerslikFakulteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_KULLANCIGIRIS_OGRETIMELEMANI">
+    <End Role="OGRETIMELEMANI" Type="Self.OGRETIMELEMANI" Multiplicity="1" />
+    <End Role="KULLANCIGIRIS" Type="Self.KULLANCIGIRIS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OGRETIMELEMANI">
+        <PropertyRef Name="OEId" />
+      </Principal>
+      <Dependent Role="KULLANCIGIRIS">
+        <PropertyRef Name="OEId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OGRENCI_FAKULTE">
+    <End Role="FAKULTE" Type="Self.FAKULTE" Multiplicity="1" />
+    <End Role="OGRENCI" Type="Self.OGRENCI" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FAKULTE">
+        <PropertyRef Name="FakulteId" />
+      </Principal>
+      <Dependent Role="OGRENCI">
+        <PropertyRef Name="OgrenciFakulteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OGRETIMELEMANI_FAKULTE">
+    <End Role="FAKULTE" Type="Self.FAKULTE" Multiplicity="1" />
+    <End Role="OGRETIMELEMANI" Type="Self.OGRETIMELEMANI" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FAKULTE">
+        <PropertyRef Name="FakulteId" />
+      </Principal>
+      <Dependent Role="OGRETIMELEMANI">
+        <PropertyRef Name="OEFakulteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OGRETIMELEMANIDERSLIK_DERSLIK">
+    <End Role="DERSLIK" Type="Self.DERSLIK" Multiplicity="1" />
+    <End Role="OGRETIMELEMANIDERSLIK" Type="Self.OGRETIMELEMANIDERSLIK" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DERSLIK">
+        <PropertyRef Name="DerslikId" />
+      </Principal>
+      <Dependent Role="OGRETIMELEMANIDERSLIK">
+        <PropertyRef Name="OEDerslikId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OGRETIMELEMANIDERSLIK_OGRETIMELEMANI">
+    <End Role="OGRETIMELEMANI" Type="Self.OGRETIMELEMANI" Multiplicity="1" />
+    <End Role="OGRETIMELEMANIDERSLIK" Type="Self.OGRETIMELEMANIDERSLIK" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OGRETIMELEMANI">
+        <PropertyRef Name="OEId" />
+      </Principal>
+      <Dependent Role="OGRETIMELEMANIDERSLIK">
+        <PropertyRef Name="OEDOEId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OGRETIMELEMANIDERSLIK_SINAV">
+    <End Role="SINAV" Type="Self.SINAV" Multiplicity="1" />
+    <End Role="OGRETIMELEMANIDERSLIK" Type="Self.OGRETIMELEMANIDERSLIK" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SINAV">
+        <PropertyRef Name="SinavId" />
+      </Principal>
+      <Dependent Role="OGRETIMELEMANIDERSLIK">
+        <PropertyRef Name="OESinavId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SinavBasvuruModelStoreContainer">
+    <EntitySet Name="BASVURU" EntityType="Self.BASVURU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DERSLIK" EntityType="Self.DERSLIK" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FAKULTE" EntityType="Self.FAKULTE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="KULLANCIGIRIS" EntityType="Self.KULLANCIGIRIS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OGRENCI" EntityType="Self.OGRENCI" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OGRETIMELEMANI" EntityType="Self.OGRETIMELEMANI" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OGRETIMELEMANIDERSLIK" EntityType="Self.OGRETIMELEMANIDERSLIK" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SINAV" EntityType="Self.SINAV" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_BASVURU_To_DERSLIK" Association="Self.FK_BASVURU_To_DERSLIK">
+      <End Role="DERSLIK" EntitySet="DERSLIK" />
+      <End Role="BASVURU" EntitySet="BASVURU" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BASVURU_To_OGRENCI" Association="Self.FK_BASVURU_To_OGRENCI">
+      <End Role="OGRENCI" EntitySet="OGRENCI" />
+      <End Role="BASVURU" EntitySet="BASVURU" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BASVURU_To_SINAV" Association="Self.FK_BASVURU_To_SINAV">
+      <End Role="SINAV" EntitySet="SINAV" />
+      <End Role="BASVURU" EntitySet="BASVURU" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DERSLIK_FAKULTE" Association="Self.FK_DERSLIK_FAKULTE">
+      <End Role="FAKULTE" EntitySet="FAKULTE" />
+      <End Role="DERSLIK" EntitySet="DERSLIK" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KULLANCIGIRIS_OGRETIMELEMANI" Association="Self.FK_KULLANCIGIRIS_OGRETIMELEMANI">
+      <End Role="OGRETIMELEMANI" EntitySet="OGRETIMELEMANI" />
+      <End Role="KULLANCIGIRIS" EntitySet="KULLANCIGIRIS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OGRENCI_FAKULTE" Association="Self.FK_OGRENCI_FAKULTE">
+      <End Role="FAKULTE" EntitySet="FAKULTE" />
+      <End Role="OGRENCI" EntitySet="OGRENCI" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OGRETIMELEMANI_FAKULTE" Association="Self.FK_OGRETIMELEMANI_FAKULTE">
+      <End Role="FAKULTE" EntitySet="FAKULTE" />
+      <End Role="OGRETIMELEMANI" EntitySet="OGRETIMELEMANI" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OGRETIMELEMANIDERSLIK_DERSLIK" Association="Self.FK_OGRETIMELEMANIDERSLIK_DERSLIK">
+      <End Role="DERSLIK" EntitySet="DERSLIK" />
+      <End Role="OGRETIMELEMANIDERSLIK" EntitySet="OGRETIMELEMANIDERSLIK" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OGRETIMELEMANIDERSLIK_OGRETIMELEMANI" Association="Self.FK_OGRETIMELEMANIDERSLIK_OGRETIMELEMANI">
+      <End Role="OGRETIMELEMANI" EntitySet="OGRETIMELEMANI" />
+      <End Role="OGRETIMELEMANIDERSLIK" EntitySet="OGRETIMELEMANIDERSLIK" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OGRETIMELEMANIDERSLIK_SINAV" Association="Self.FK_OGRETIMELEMANIDERSLIK_SINAV">
+      <End Role="SINAV" EntitySet="SINAV" />
+      <End Role="OGRETIMELEMANIDERSLIK" EntitySet="OGRETIMELEMANIDERSLIK" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

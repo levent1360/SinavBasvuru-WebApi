@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SinavBasvuruModelStoreContainer" CdmEntityContainer="SinavBasvuruEntities">
+    <EntitySetMapping Name="BASVURU">
+      <EntityTypeMapping TypeName="SinavBasvuruModel.BASVURU">
+        <MappingFragment StoreEntitySet="BASVURU">
+          <ScalarProperty Name="BasvuruId" ColumnName="BasvuruId" />
+          <ScalarProperty Name="BasvuruOgrenciId" ColumnName="BasvuruOgrenciId" />
+          <ScalarProperty Name="BasvuruTarihi" ColumnName="BasvuruTarihi" />
+          <ScalarProperty Name="BasvuruDuzenlemeTarihi" ColumnName="BasvuruDuzenlemeTarihi" />
+          <ScalarProperty Name="BasvuruIptal" ColumnName="BasvuruIptal" />
+          <ScalarProperty Name="BasvuruIptalTarihi" ColumnName="BasvuruIptalTarihi" />
+          <ScalarProperty Name="BasvuruSinavId" ColumnName="BasvuruSinavId" />
+          <ScalarProperty Name="BasvuruDerslikId" ColumnName="BasvuruDerslikId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DERSLIK">
+      <EntityTypeMapping TypeName="SinavBasvuruModel.DERSLIK">
+        <MappingFragment StoreEntitySet="DERSLIK">
+          <ScalarProperty Name="DerslikId" ColumnName="DerslikId" />
+          <ScalarProperty Name="DerslikAd" ColumnName="DerslikAd" />
+          <ScalarProperty Name="DerslikKat" ColumnName="DerslikKat" />
+          <ScalarProperty Name="DerslikFakulteId" ColumnName="DerslikFakulteId" />
+          <ScalarProperty Name="DerslikKapasite" ColumnName="DerslikKapasite" />
+          <ScalarProperty Name="DerslikAktif" ColumnName="DerslikAktif" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FAKULTE">
+      <EntityTypeMapping TypeName="SinavBasvuruModel.FAKULTE">
+        <MappingFragment StoreEntitySet="FAKULTE">
+          <ScalarProperty Name="FakulteId" ColumnName="FakulteId" />
+          <ScalarProperty Name="FakulteAd" ColumnName="FakulteAd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KULLANCIGIRIS">
+      <EntityTypeMapping TypeName="SinavBasvuruModel.KULLANCIGIRIS">
+        <MappingFragment StoreEntitySet="KULLANCIGIRIS">
+          <ScalarProperty Name="KullaniciId" ColumnName="KullaniciId" />
+          <ScalarProperty Name="KGOEId" ColumnName="OEId" />
+          <ScalarProperty Name="KGOEDKullaniciAdi" ColumnName="OEDKullaniciAdi" />
+          <ScalarProperty Name="KGOEDSifre" ColumnName="OEDSifre" />
+          <ScalarProperty Name="KGYetki" ColumnName="Yetki" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OGRENCI">
+      <EntityTypeMapping TypeName="SinavBasvuruModel.OGRENCI">
+        <MappingFragment StoreEntitySet="OGRENCI">
+          <ScalarProperty Name="OgrenciId" ColumnName="OgrenciId" />
+          <ScalarProperty Name="OgrenciNo" ColumnName="OgrenciNo" />
+          <ScalarProperty Name="OgrenciTC" ColumnName="OgrenciTC" />
+          <ScalarProperty Name="OgrenciAd" ColumnName="OgrenciAd" />
+          <ScalarProperty Name="OgrenciSoyad" ColumnName="OgrenciSoyad" />
+          <ScalarProperty Name="OgrenciMail" ColumnName="OgrenciMail" />
+          <ScalarProperty Name="OgrenciTel" ColumnName="OgrenciTel" />
+          <ScalarProperty Name="OgrenciFakulteId" ColumnName="OgrenciFakulteId" />
+          <ScalarProperty Name="OgrenciBolum" ColumnName="OgrenciBolum" />
+          <ScalarProperty Name="OgrenciSinif" ColumnName="OgrenciSinif" />
+          <ScalarProperty Name="OgrenciKayitTuru" ColumnName="OgrenciKayitTuru" />
+          <ScalarProperty Name="OgrenciDerece" ColumnName="OgrenciDerece" />
+          <ScalarProperty Name="OgrenciAktif" ColumnName="OgrenciAktif" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OGRETIMELEMANI">
+      <EntityTypeMapping TypeName="SinavBasvuruModel.OGRETIMELEMANI">
+        <MappingFragment StoreEntitySet="OGRETIMELEMANI">
+          <ScalarProperty Name="OEKimlikNo" ColumnName="OEKimlikNo" />
+          <ScalarProperty Name="OEId" ColumnName="OEId" />
+          <ScalarProperty Name="OEAd" ColumnName="OEAd" />
+          <ScalarProperty Name="OESoyad" ColumnName="OESoyad" />
+          <ScalarProperty Name="OEUnvan" ColumnName="OEUnvan" />
+          <ScalarProperty Name="OEFakulteId" ColumnName="OEFakulteId" />
+          <ScalarProperty Name="OETel" ColumnName="OETel" />
+          <ScalarProperty Name="OEEposta" ColumnName="OEEposta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OGRETIMELEMANIDERSLIK">
+      <EntityTypeMapping TypeName="SinavBasvuruModel.OGRETIMELEMANIDERSLIK">
+        <MappingFragment StoreEntitySet="OGRETIMELEMANIDERSLIK">
+          <ScalarProperty Name="OEDId" ColumnName="OEDId" />
+          <ScalarProperty Name="OEDerslikId" ColumnName="OEDerslikId" />
+          <ScalarProperty Name="OESinavId" ColumnName="OESinavId" />
+          <ScalarProperty Name="OEDOEId" ColumnName="OEDOEId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SINAV">
+      <EntityTypeMapping TypeName="SinavBasvuruModel.SINAV">
+        <MappingFragment StoreEntitySet="SINAV">
+          <ScalarProperty Name="SinavId" ColumnName="SinavId" />
+          <ScalarProperty Name="SinavAd" ColumnName="SinavAd" />
+          <ScalarProperty Name="SinavDonem" ColumnName="SinavDonem" />
+          <ScalarProperty Name="SinavZamani" ColumnName="SinavZamani" />
+          <ScalarProperty Name="SinavTuru" ColumnName="SinavTuru" />
+          <ScalarProperty Name="SinavDili" ColumnName="SinavDili" />
+          <ScalarProperty Name="SinavTamam" ColumnName="SinavTamam" />
+          <ScalarProperty Name="SinavIptal" ColumnName="SinavIptal" />
+          <ScalarProperty Name="SinavAciklama" ColumnName="SinavAciklama" />
+          <ScalarProperty Name="SinavBasvuruBaslama" ColumnName="SinavBasvuruBaslama" />
+          <ScalarProperty Name="SinavBasvuruBitis" ColumnName="SinavBasvuruBitis" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="SinavBasvuruModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
