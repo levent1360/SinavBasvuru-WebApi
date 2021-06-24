@@ -637,7 +637,57 @@ namespace SinavBasvuruApi.Controllers
                 SinavTamam=x.SinavTamam,
                 SinavAciklama=x.SinavAciklama,
                 SinavBasvuruSayisi=x.BASVURU.Count()
-            }).ToList();
+            }).OrderBy(t=>t.SinavTamam).ThenByDescending(s=>s.SinavZamani).ToList();
+
+            return sinavliste;
+        }
+
+        [HttpGet]
+        [Route("api/basvurulacaksinavlistele")]
+        public List<SinavVM> BasvurulacakSinavListe()
+        {
+            DateTime simdi = DateTime.Now;
+
+            List<SinavVM> sinavliste = db.SINAV.ToList().Where(s=>DateTime.Parse(s.SinavBasvuruBitis)>=simdi && DateTime.Parse(s.SinavBasvuruBaslama) <= simdi).Select(x => new SinavVM()
+            {
+                SinavId = x.SinavId,
+                SinavAd = x.SinavAd,
+                SinavDonem = x.SinavDonem,
+                SinavZamani = x.SinavZamani,
+                SinavBasvuruBaslama = x.SinavBasvuruBaslama,
+                SinavBasvuruBitis = x.SinavBasvuruBitis,
+                SinavDili = x.SinavDili,
+                SinavTuru = x.SinavTuru,
+                SinavIptal = x.SinavIptal,
+                SinavTamam = x.SinavTamam,
+                SinavAciklama = x.SinavAciklama,
+                SinavBasvuruSayisi = x.BASVURU.Count()
+            }).OrderBy(t => t.SinavTamam).ThenByDescending(s => s.SinavZamani).ToList();
+
+            return sinavliste;
+        }
+
+        [HttpGet]
+        [Route("api/basvurubitensinavlistele")]
+        public List<SinavVM> BasvurubitenSinavListe()
+        {
+            DateTime simdi = DateTime.Now;
+
+            List<SinavVM> sinavliste = db.SINAV.ToList().Where(s => DateTime.Parse(s.SinavBasvuruBitis) <= simdi).Select(x => new SinavVM()
+            {
+                SinavId = x.SinavId,
+                SinavAd = x.SinavAd,
+                SinavDonem = x.SinavDonem,
+                SinavZamani = x.SinavZamani,
+                SinavBasvuruBaslama = x.SinavBasvuruBaslama,
+                SinavBasvuruBitis = x.SinavBasvuruBitis,
+                SinavDili = x.SinavDili,
+                SinavTuru = x.SinavTuru,
+                SinavIptal = x.SinavIptal,
+                SinavTamam = x.SinavTamam,
+                SinavAciklama = x.SinavAciklama,
+                SinavBasvuruSayisi = x.BASVURU.Count()
+            }).OrderBy(t => t.SinavTamam).ThenByDescending(s => s.SinavZamani).ToList();
 
             return sinavliste;
         }
@@ -665,10 +715,13 @@ namespace SinavBasvuruApi.Controllers
             return sinav;
         }
 
+
         [HttpPost]
         [Route("api/sinavekle")]
         public Sonuc SinavEkle(SINAV sinav)
         {
+
+            DateTime simdi = DateTime.Now;
             SINAV yenisinav = new SINAV()
             {
                 SinavId = Guid.NewGuid().ToString(),
@@ -683,6 +736,13 @@ namespace SinavBasvuruApi.Controllers
                 SinavTamam = sinav.SinavTamam,
                 SinavAciklama = sinav.SinavAciklama
             };
+
+            if (DateTime.Parse(yenisinav.SinavZamani) < simdi)
+            {
+                sonuc.Islem = false;
+                sonuc.Mesaj = "Sınav için daha ileri bir tarih girilmelidir.";
+                return sonuc;
+            }
 
             if (db.SINAV.Count(s => s.SinavAd == sinav.SinavAd && s.SinavZamani == sinav.SinavZamani) > 0)
             {
@@ -791,10 +851,10 @@ namespace SinavBasvuruApi.Controllers
         }
 
         [HttpGet]
-        [Route("api/basvurubyid/{SinavId}")]
-        public BasvuruVM BasvuruById(string BasvuruId)
+        [Route("api/basvurubysinavid/{SinavId}")]
+        public List<BasvuruVM> BasvuruById(string SinavId)
         {
-            BasvuruVM basvuru = db.BASVURU.Where(s => s.BasvuruId == BasvuruId).Select(x => new BasvuruVM()
+            List<BasvuruVM> basvuru = db.BASVURU.Where(s => s.BasvuruSinavId == SinavId).Select(x => new BasvuruVM()
             {
                 BasvuruId = x.BasvuruId,
                 BasvuruSinavId = x.BasvuruSinavId,
@@ -820,7 +880,42 @@ namespace SinavBasvuruApi.Controllers
                 BasvuruDerslikAd = x.DERSLIK.DerslikAd,
                 BasvuruDerslikKat = x.DERSLIK.DerslikKat,
                 BasvuruIptal = x.BasvuruIptal
-            }).SingleOrDefault();
+            }).ToList();
+
+            return basvuru;
+        }
+
+        [HttpGet]
+        [Route("api/basvurubyogrenciid/{OgrenciId}")]
+        public List<BasvuruVM> BasvuruByOgrenciId(string OgrenciId)
+        {
+            List<BasvuruVM> basvuru = db.BASVURU.Where(s => s.BasvuruOgrenciId == OgrenciId).Select(x => new BasvuruVM()
+            {
+                BasvuruId = x.BasvuruId,
+                BasvuruSinavId = x.BasvuruSinavId,
+                BasvuruSinavAd = x.SINAV.SinavAd,
+                BasvuruSinavZamani = x.SINAV.SinavZamani,
+                BasvuruOgrenciId = x.BasvuruOgrenciId,
+                BasvuruOgrenciNo = x.OGRENCI.OgrenciNo,
+                BasvuruOgrenciTC = x.OGRENCI.OgrenciTC,
+                BasvuruOgrenciAd = x.OGRENCI.OgrenciAd,
+                BasvuruOgrenciSoyad = x.OGRENCI.OgrenciSoyad,
+                BasvuruOgrenciFakulteId = x.OGRENCI.OgrenciFakulteId,
+                BasvuruOgrenciFakulteAd = x.OGRENCI.FAKULTE.FakulteAd,
+                BasvuruOgrenciBolum = x.OGRENCI.OgrenciBolum,
+                BasvuruOgrenciDerece = x.OGRENCI.OgrenciDerece,
+                BasvuruOgrenciSinif = x.OGRENCI.OgrenciSinif,
+                BasvuruOgrenciKayitTuru = x.OGRENCI.OgrenciKayitTuru,
+                BasvuruOgrenciMail = x.OGRENCI.OgrenciMail,
+                BasvuruOgrenciTel = x.OGRENCI.OgrenciTel,
+                BasvuruTarihi = x.BasvuruTarihi,
+                BasvuruIptalTarihi = x.BasvuruIptalTarihi,
+                BasvuruDuzenlemeTarihi = x.BasvuruDuzenlemeTarihi,
+                BasvuruDerslikId = x.BasvuruDerslikId,
+                BasvuruDerslikAd = x.DERSLIK.DerslikAd,
+                BasvuruDerslikKat = x.DERSLIK.DerslikKat,
+                BasvuruIptal = x.BasvuruIptal
+            }).ToList();
 
             return basvuru;
         }
@@ -829,16 +924,20 @@ namespace SinavBasvuruApi.Controllers
         [Route("api/basvuruekle")]
         public Sonuc BasvuruEkle(BASVURU basvuru)
         {
+            DateTime simdi = DateTime.Now;
+
+            SINAV sinavkontrol = db.SINAV.Where(s => s.SinavId == basvuru.BasvuruSinavId).FirstOrDefault();
+
             BASVURU yenibasvuru = new BASVURU()
             {
                 BasvuruId = Guid.NewGuid().ToString(),
                 BasvuruSinavId = basvuru.BasvuruSinavId,
                 BasvuruOgrenciId = basvuru.BasvuruOgrenciId,
                 BasvuruTarihi = basvuru.BasvuruTarihi,
-                BasvuruIptalTarihi = "-",
-                BasvuruDuzenlemeTarihi = "-",
-                BasvuruDerslikId = "6dae259b-fe9a-4af6-a6b5-c079eb88a5fc",
-                BasvuruIptal = 0
+                BasvuruIptalTarihi = basvuru.BasvuruIptalTarihi,
+                BasvuruDuzenlemeTarihi = basvuru.BasvuruDuzenlemeTarihi,
+                BasvuruDerslikId = basvuru.BasvuruDerslikId,
+                BasvuruIptal = basvuru.BasvuruIptal
             };
             OGRENCI ogrenciaktifkontrol = db.OGRENCI.Where(x => x.OgrenciId == basvuru.BasvuruOgrenciId).SingleOrDefault();
 
@@ -857,6 +956,26 @@ namespace SinavBasvuruApi.Controllers
                 sonuc.Mesaj = "Sınav başvurusu zaten yapılmış.";
                 return sonuc;
             }
+            if (DateTime.Parse(sinavkontrol.SinavZamani) < simdi)
+            {
+                sonuc.Islem = false;
+                sonuc.Mesaj = "Sınav süresi geçen sınava basvuru yapılamaz.";
+                return sonuc;
+            }
+            if (DateTime.Parse(sinavkontrol.SinavBasvuruBitis) < simdi)
+            {
+                sonuc.Islem = false;
+                sonuc.Mesaj = "Başvuru süresi biten sınava basvuru yapılamaz.";
+                return sonuc;
+            }
+            if (DateTime.Parse(sinavkontrol.SinavBasvuruBaslama) > simdi)
+            {
+                sonuc.Islem = false;
+                sonuc.Mesaj = "Başvuru süresi başladıktan sonra sınava basvuru yapabilirsiniz.";
+                return sonuc;
+            }
+
+
 
             db.BASVURU.Add(yenibasvuru);
             db.SaveChanges();
@@ -891,9 +1010,10 @@ namespace SinavBasvuruApi.Controllers
         }
 
         [HttpDelete]
-        [Route("api/basvurusil/{SinavId}")]
+        [Route("api/basvurusil/{BasvuruId}")]
         public Sonuc BasvuruSil(string BasvuruId)
         {
+            DateTime simdi = DateTime.Now;
             BASVURU silbasvuru = db.BASVURU.Where(s => s.BasvuruId == BasvuruId).SingleOrDefault();
            
             if (silbasvuru == null)
@@ -902,6 +1022,19 @@ namespace SinavBasvuruApi.Controllers
                 sonuc.Mesaj = "Kayıt bulunamadı";
                 return sonuc;
             }
+            if (DateTime.Parse(silbasvuru.SINAV.SinavBasvuruBitis)<simdi)
+            {
+                sonuc.Islem = false;
+                sonuc.Mesaj = "Başvuru süresi biten başvurular iptal edilemez";
+                return sonuc;
+            }
+            if (DateTime.Parse(silbasvuru.SINAV.SinavZamani) < simdi)
+            {
+                sonuc.Islem = false;
+                sonuc.Mesaj = "Sınav süresi geçen başvurular iptal edilemez";
+                return sonuc;
+            }
+
 
             db.BASVURU.Remove(silbasvuru);
             db.SaveChanges();
@@ -1130,6 +1263,25 @@ namespace SinavBasvuruApi.Controllers
             sonuc.Islem = true;
             sonuc.Mesaj = "Kullanici başarıyla silindi.";
             return sonuc;
+        }
+        #endregion
+
+        #region İstatistikler
+
+        [HttpGet]
+        [Route("api/istatistikler")]
+
+        public  StatsVM Stats()
+        {
+            StatsVM istatistik = new StatsVM();
+
+
+            istatistik.FakulteSayisi = db.FAKULTE.Count();
+            istatistik.DerslikSayisi = db.DERSLIK.Count();
+            istatistik.OgrenciSayisi = db.OGRENCI.Count();
+            istatistik.OgretimElemaniSayisi = db.OGRETIMELEMANI.Count();
+            
+            return istatistik;
         }
         #endregion
     }

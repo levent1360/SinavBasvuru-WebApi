@@ -176,6 +176,7 @@
     <Compile Include="ViewModels\OgretimElemaniVM.cs" />
     <Compile Include="ViewModels\SinavVM.cs" />
     <Compile Include="ViewModels\Sonuc.cs" />
+    <Compile Include="ViewModels\StatsVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="Models\ModelDB.edmx">
